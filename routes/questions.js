@@ -4,11 +4,12 @@ const { AuthorizeUser } = require("../Controller/loginController");
 const {
   AskQuestion,
   GetAllQuestion,
+  DeleteQuestion,
 } = require("../Controller/questionsController");
 
 router.get("/", async function (req, res, next) {
   try {
-   res.json(await GetAllQuestion());
+    res.json(await GetAllQuestion());
   } catch (error) {
     console.log(error);
     res.status(500).send("Server Busy");
@@ -23,7 +24,7 @@ router.post("/ask", async function (req, res, next) {
     if (loginCredentials === false) {
       res.status(400).send("Invalid");
     } else {
-      res.status(200).send(AskQuestion(newQuestion, loginCredentials.email,loginCredentials.name));
+      res.json(await AskQuestion(newQuestion, loginCredentials.email,loginCredentials.name));
     }
   } catch (error) {
     console.log(error);
@@ -33,12 +34,12 @@ router.post("/ask", async function (req, res, next) {
 
 router.delete("/delete/:id", async function (req, res, next) {
   try {
-    const { email, password } = await req.body;
-    var loginCredentials = await AuthorizeUser(email, password);
+    const auth_token = req.headers.authorization.split(" ")[1];
+    var loginCredentials = await AuthorizeUser(auth_token);
     if (loginCredentials === false) {
       res.status(200).send("Invalid");
     } else {
-      res.status(200).send(AskQuestion());
+      res.json(await DeleteQuestion(req.params.id, loginCredentials.email));
     }
   } catch (error) {
     console.log(error);
@@ -46,19 +47,20 @@ router.delete("/delete/:id", async function (req, res, next) {
   }
 });
 
-router.post("/vote/:id", async function (req, res, next) {
-  try {
-    const { email, password } = await req.body;
-    var loginCredentials = await AuthorizeUser(email, password);
-    if (loginCredentials === false) {
-      res.status(200).send("Invalid");
-    } else {
-      res.status(200).send(AskQuestion());
-    }
-  } catch (error) {
-    console.log(error);
-    res.status(400).send("Server Busy");
-  }
-});
+// router.post("/vote/:id", async function (req, res, next) {
+//   try {
+//     const { email, password } = await req.body;
+//     var loginCredentials = await AuthorizeUser(email, password);
+//     if (loginCredentials === false) {
+//       res.status(200).send("Invalid");
+//     } else {
+
+//       console.log(res.status(200).send(AskQuestion()));
+//     }
+//   } catch (error) {
+//     console.log(error);
+//     res.status(400).send("Server Busy");
+//   }
+// });
 
 module.exports = router;

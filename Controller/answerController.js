@@ -16,7 +16,7 @@ async function PostAnswer(
     await Questions.findByIdAndUpdate(_id, {
       $addToSet: { answer: [{ answerBody, userAnswered, userEmail }] },
     });
-    return "true";
+    return true;
   } catch (error) {
     return "Server Busy";
   }

@@ -12,6 +12,7 @@ var questionsRouter = require("./routes/questions");
 var answerRouter = require("./routes/answer");
 var tagsRouter = require("./routes/tags");
 var usersRouter = require("./routes/users");
+var forgetpasswordRouter = require("./routes/forgetpassword");
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use("/questions", questionsRouter);
 app.use("/answer", answerRouter);
 app.use("/tags", tagsRouter);
 app.use("/users", usersRouter);
+app.use("/forgetpassword", forgetpasswordRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

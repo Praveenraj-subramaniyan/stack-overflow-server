@@ -5,6 +5,7 @@ const {
   AskQuestion,
   GetAllQuestion,
   DeleteQuestion,
+  voteQuestion,
 } = require("../Controller/questionsController");
 
 router.get("/", async function (req, res, next) {
@@ -47,20 +48,20 @@ router.delete("/delete/:id", async function (req, res, next) {
   }
 });
 
-// router.post("/vote/:id", async function (req, res, next) {
-//   try {
-//     const { email, password } = await req.body;
-//     var loginCredentials = await AuthorizeUser(email, password);
-//     if (loginCredentials === false) {
-//       res.status(200).send("Invalid");
-//     } else {
-
-//       console.log(res.status(200).send(AskQuestion()));
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     res.status(400).send("Server Busy");
-//   }
-// });
+router.post("/vote/:id", async function (req, res, next) {
+  try {
+    const {voteValue} = await req.body;
+    const auth_token = req.headers.authorization.split(" ")[1];
+    var loginCredentials = await AuthorizeUser(auth_token);
+    if (loginCredentials === false) {
+      res.status(200).send("Invalid");
+    } else {
+      res.status(200).send(await voteQuestion(req.params.id,voteValue,loginCredentials.email));
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(400).send("Server Busy");
+  }
+});
 
 module.exports = router;

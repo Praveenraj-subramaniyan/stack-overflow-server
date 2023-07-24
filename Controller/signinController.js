@@ -24,7 +24,7 @@ async function InsertSignUpUser(token) {
       const content = `
   <h4>Hi there,</h4>
   <h5>Welcome to Stack OverFlow Clone</h5>
-  <p>our account has been successfully registered in Stack OverFlow clone</p>
+  <p>Your account has been successfully registered in Stack OverFlow clone</p>
   <p>Click below link to login into your account.</p>
   <a href="https://stack-overflow-clone-praveenraj.netlify.app/">https://stack-overflow-clone-praveenraj.netlify.app/</a>
   <p>Regards,</p>

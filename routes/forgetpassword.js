@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
     const { email } = await req.body;
     var checkCredentials = await CheckUser(email);
     if (checkCredentials === false) {
-      res.status(400).send(false);
+      res.status(200).send(false);
     } else if (checkCredentials === true) {
       const response = await ForgetPassword(email);
       if (response === true) {

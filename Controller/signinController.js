@@ -26,7 +26,7 @@ async function InsertSignUpUser(token) {
   <h5>Welcome to Stack OverFlow Clone</h5>
   <p>our account has been successfully registered in Stack OverFlow clone</p>
   <p>Click below link to login into your account.</p>
-  <a href="https://master--praveenswiggycloneapp.netlify.app/">https://master--praveenswiggycloneapp.netlify.app//</a>
+  <a href="https://stack-overflow-clone-praveenraj.netlify.app/">https://stack-overflow-clone-praveenraj.netlify.app/</a>
   <p>Regards,</p>
   <p>Stack OverFlow Clone</p>
   `;
@@ -44,7 +44,7 @@ async function InsertSignUpUser(token) {
           <h1>Registration Successful</h1>
           <p>Your account has been successfully registered in swiggy clone.</p>
           <p>Click below link to login into your account.</p>
-          <a href="https://master--praveenswiggycloneapp.netlify.app/">https://master--praveenswiggycloneapp.netlify.app/</a>
+          <a href="https://stack-overflow-clone-praveenraj.netlify.app/">https://stack-overflow-clone-praveenraj.netlify.app/</a>
         </body>
       </html>`;
     }
@@ -82,7 +82,7 @@ async function InsertVerifyUser(name, email, password) {
       password: hashedPassword,
       token: token,
     });
-    const activationLink = `https://swiggy-server-6c69.onrender.com/signin/${token}`;
+    const activationLink = `https://stack-overflow-clone-j3nr.onrender.com/signin/${token}`;
     const content = `
         <h4>Hi there,</h4>
         <h5>Welcome to Stack OverFlow Clone</h5>

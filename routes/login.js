@@ -7,7 +7,7 @@ router.post("/", async function (req, res, next) {
     const { email, password } = await req.body;
     var loginCredentials = await AuthenticateUser(email, password);
     if (loginCredentials === false) {
-      res.status(400).send(false);
+      res.status(200).send(false);
     } else {
       res.status(200).send(loginCredentials);
     }

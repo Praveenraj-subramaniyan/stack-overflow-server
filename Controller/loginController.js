@@ -18,7 +18,7 @@ async function CheckUser(email) {
     }
     return false;
   } catch (error) {
-    return false;
+    return "Server Busy";
   }
 }
 

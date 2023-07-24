@@ -9,7 +9,6 @@ const verifySchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      unique: true,
       required: true,
     },
     password: {
@@ -18,7 +17,6 @@ const verifySchema = new mongoose.Schema(
     },
     token: {
       type: String,
-      unique: true,
       required: true,
     },
   },
